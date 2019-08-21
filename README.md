@@ -9,6 +9,19 @@ A REST based application
 - sends the incoming meeting requests to the calender
 - updates the calender with the incoming messages from the employees that update their availability
 
+## Resources
+
+- [**Calendar**](resources/calendar.md )
+- [**Employee**](resources/employee.md)
+- [**MeetingReply**](resources/meetingreply.md)
+- [**Timeslot**](resources/timeslot.md)
+
+
+## API
+
+- [**meetingRequest**](api/meetingrequest.md)
+- [**employeeAvailability**](api/employeeavailability.md)
+
 ### Schema
 
 All API access is over HTTPS, and accessed from https://api.mysite.com. All data is sent and received as JSON.
@@ -29,15 +42,26 @@ The returned HTTP headers of any API request show your current rate limit status
 |X-RateLimit-Remaining|The number of requests remaining in the current rate limit window.|
 |X-RateLimit-Reset|The time at which the current rate limit window resets in UTC epoch seconds.|
 
-## Resources
+### User agent required
 
-- [**Calendar**](resources/calendar.md )
-- [**Employee**](resources/employee.md)
-- [**MeetingReply**](resources/meetingreply.md)
-- [**Timeslot**](resources/timeslot.md)
+All API requests MUST include a valid User-Agent header. Requests with no User-Agent header will be rejected.
+
+If you provide an invalid User-Agent header, you will receive a 403 Forbidden response.
 
 
-## API
+### Timezones
 
-- [**meetingRequest**](api/meetingrequest.md)
-- [**employeeAvailability**](api/employeeavailability.md)
+Some requests that create new data, such as creating a new commit, allow you to provide time zone information when specifying or generating timestamps. We apply the following rules, in order of priority, to determine timezone information for API calls.
+
+    - Explicitly providing an ISO 8601 timestamp with timezone information
+    - Defaulting to UTC without other timezone information
+
+#### Explicitly providing an ISO 8601 timestamp with timezone information
+
+For API calls that allow for a timestamp to be specified, we use that exact timestamp. An example of this is the Commits API.
+
+These timestamps look something like 2014-02-27T15:05:06+01:00. Also see this example for how these timestamps can be specified.
+
+#### Defaulting to UTC without other timezone information
+
+If the steps above don't result in any information, we use UTC as the timezone to create the git commit.
