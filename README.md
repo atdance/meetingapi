@@ -77,17 +77,17 @@ These are the possible types of client errors on API calls that receive request 
 
 ### Timezones
 
-Some requests that create new data, such as creating a new commit, allow you to provide time zone information when specifying or generating timestamps. We apply the following rules, in order of priority, to determine timezone information for API calls.
+Some requests that create new data allow you to provide time zone information when specifying or generating timestamps. We apply the following rules, in order of priority, to determine timezone information for API calls.
 
     - Explicitly providing an ISO 8601 timestamp with timezone information
     - Defaulting to UTC without other timezone information
 
 #### Explicitly providing an ISO 8601 timestamp with timezone information
 
-For API calls that allow for a timestamp to be specified, we use that exact timestamp. An example of this is the Commits API.
+For API calls that allow for a timestamp to be specified, we use that exact timestamp.
 
-These timestamps look something like 2014-02-27T15:05:06+01:00. Also see this example for how these timestamps can be specified.
+These timestamps look something like 2019-09-27T15:05:09+01:00. Also see this example for how these timestamps can be specified.
 
 #### Defaulting to UTC without other timezone information
 
-If the steps above don't result in any information, we use UTC as the timezone to create the git commit.
+If the steps above don't result in any information, we use UTC as the timezone to create or update the resource.
