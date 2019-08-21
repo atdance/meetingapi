@@ -54,17 +54,25 @@ These are the possible types of client errors on API calls that receive request 
 
 - Sending invalid JSON will result in a 400 Bad Request response.
 
-    HTTP/1.1 400 Bad Request
-    Content-Length: 35
+```http
+  HTTP/1.1 400 Bad Request
+  Content-Length: 40
 
-    {"message":"Problems parsing JSON"}
+  {
+	"message":"Problems parsing JSON"
+  }
+```	
 
 - Sending the wrong type of JSON values will result in a 400 Bad Request response.
 
+```http
   HTTP/1.1 400 Bad Request
   Content-Length: 35
 
-  {"message":"Body should be a JSON object"}
+  {
+	"message":"Body should be a JSON object"
+  }
+```
 
 
 ### Timezones
