@@ -48,6 +48,24 @@ All API requests MUST include a valid User-Agent header. Requests with no User-A
 
 If you provide an invalid User-Agent header, you will receive a 403 Forbidden response.
 
+### Client errors
+
+These are the possible types of client errors on API calls that receive request bodies:
+
+- Sending invalid JSON will result in a 400 Bad Request response.
+
+    HTTP/1.1 400 Bad Request
+    Content-Length: 35
+
+    {"message":"Problems parsing JSON"}
+
+- Sending the wrong type of JSON values will result in a 400 Bad Request response.
+
+  HTTP/1.1 400 Bad Request
+  Content-Length: 35
+
+  {"message":"Body should be a JSON object"}
+
 
 ### Timezones
 
