@@ -5,9 +5,9 @@ Suggest meeting times based on employee time constraints.
 ## Architecture
 
 A calender database is the core.
-A REST based application 
-- sends the incoming meeting requests to the calender 
-- updates the calender with the incoming messages from the emmployees that update their availability
+A REST based application
+- sends the incoming meeting requests to the calender
+- updates the calender with the incoming messages from the employees that update their availability
 
 ### Schema
 
@@ -24,10 +24,10 @@ Note that the Search API has custom rate limit rules.
 The returned HTTP headers of any API request show your current rate limit status:
 
 |Header Name|Description|
+|:---------------|:--------|
 |X-RateLimit-Limit|The maximum number of requests you're permitted to make per hour.|
 |X-RateLimit-Remaining|The number of requests remaining in the current rate limit window.|
 |X-RateLimit-Reset|The time at which the current rate limit window resets in UTC epoch seconds.|
-
 
 ## Resources
 
@@ -41,5 +41,3 @@ The returned HTTP headers of any API request show your current rate limit status
 
 - [**meetingRequest**](api/meetingrequest.md)
 - [**employeeAvailability**](api/employeeavailability.md)
-
- 
